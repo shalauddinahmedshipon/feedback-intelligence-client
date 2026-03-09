@@ -17,7 +17,7 @@ export const settingsApi = baseApi.injectEndpoints({
       UpdateSettingsPayload
     >({
       query: (data) => ({
-        url: "/settings",
+        url: "/settings/update-settings",
         method: "PATCH",
         body: data,
       }),

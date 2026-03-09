@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
-
+import SettingsModal from "@/components/module/SettingsModal";
 
 const Home = () => {
     return (
         <div>
-            <Button>Back to home</Button>
+        <div className="flex justify-end mb-6">
+        <SettingsModal />
+        </div>
+           
         </div>
     );
 };

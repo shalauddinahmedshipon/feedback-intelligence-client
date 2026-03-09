@@ -1,22 +1,24 @@
+
 export type FeedbackTeam =
-  | "Engineering"
-  | "Product"
-  | "Support"
-  | "Billing"
-  | "Design"
-  | "Security";
+  | "engineering"
+  | "product"
+  | "support"
+  | "billing"
+  | "design"
+  | "security"
 
 export interface ITeamEmailSettings {
-  teamEmails: Record<FeedbackTeam, string>;
-  updatedAt?: string;
+  teamEmails: Record<FeedbackTeam, string>
+  updatedAt?: string
 }
 
+
 export interface SettingsResponse {
-  statusCode: number;
-  message: string;
-  data: ITeamEmailSettings;
+  statusCode: number
+  message: string
+  data: ITeamEmailSettings
 }
 
 export interface UpdateSettingsPayload {
-  teamEmails: Record<FeedbackTeam, string>;
+  teamEmails: Record<FeedbackTeam, string>
 }

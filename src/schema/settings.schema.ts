@@ -1,14 +1,15 @@
+// schema/settings.schema.ts
 import { z } from "zod";
 
 export const settingsSchema = z.object({
   teamEmails: z.object({
-    Engineering: z.string().email(),
-    Product: z.string().email(),
-    Support: z.string().email(),
-    Billing: z.string().email(),
-    Design: z.string().email(),
-    Security: z.string().email(),
-  }),
+    engineering: z.string().email({ message: "Please enter a valid email" }),
+    product:     z.string().email({ message: "Please enter a valid email" }),
+    support:     z.string().email({ message: "Please enter a valid email" }),
+    billing:     z.string().email({ message: "Please enter a valid email" }),
+    design:      z.string().email({ message: "Please enter a valid email" }),
+    security:    z.string().email({ message: "Please enter a valid email" }),
+  }).strict(), // prevents extra keys
 });
 
 export type SettingsFormValues = z.infer<typeof settingsSchema>;
