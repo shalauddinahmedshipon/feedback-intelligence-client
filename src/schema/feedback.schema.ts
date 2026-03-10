@@ -6,7 +6,7 @@ export const feedbackSchema = z.object({
       error: "Feedback message is required",
     })
     .min(10, "Feedback must be at least 10 characters")
-    .max(2000, "Feedback cannot exceed 2000 characters"),
+    .max(1000, "Feedback cannot exceed 1000 characters"),
 
   userName: z
     .string()

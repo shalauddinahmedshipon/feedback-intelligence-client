@@ -17,9 +17,11 @@ import {
 import { useCreateFeedbackMutation } from "@/store/api/feedback.api"
 import { Loader2, Plus } from "lucide-react"
 import { feedbackSchema, type FeedbackFormValues } from "@/schema/feedback.schema"
+import { useState } from "react"
 
 export function CreateFeedbackModal() {
   const [createFeedback, { isLoading }] = useCreateFeedbackMutation()
+  const [open, setOpen] = useState(false) // control dialog open state
 
   const form = useForm<FeedbackFormValues>({
     resolver: zodResolver(feedbackSchema),
@@ -33,18 +35,20 @@ export function CreateFeedbackModal() {
       await createFeedback(data).unwrap()
       toast.success("Feedback submitted successfully!")
       reset()
+      setOpen(false) // close modal after success
     } catch (err: any) {
       toast.error(err?.data?.message || "Failed to submit feedback")
     }
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       {/* Trigger button */}
       <DialogTrigger asChild>
         <Button variant="outline">
-             <Plus size={16} />
-            Submit Feedback</Button>
+          <Plus size={16} />
+          Submit Feedback
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-lg">
@@ -72,8 +76,8 @@ export function CreateFeedbackModal() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="message">Message</FieldLabel>
-                  <Textarea {...field} id="message" rows={6} placeholder="Your feedback..." />
-                  <FieldDescription>{field.value.length} / 2000 characters</FieldDescription>
+                  <Textarea {...field} id="message" rows={6} className="h-40" placeholder="Your feedback..." />
+                  <FieldDescription>{field.value.length} / 1000 characters</FieldDescription>
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
@@ -82,7 +86,12 @@ export function CreateFeedbackModal() {
 
           <DialogFooter className="flex justify-end gap-2">
             <DialogClose asChild>
-              <Button variant="outline" type="button" disabled={isLoading} onClick={() => reset()}>
+              <Button
+                variant="outline"
+                type="button"
+                disabled={isLoading}
+                onClick={() => reset()}
+              >
                 Cancel
               </Button>
             </DialogClose>

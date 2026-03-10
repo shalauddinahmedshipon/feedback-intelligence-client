@@ -41,6 +41,8 @@ export interface IFeedbackQuery {
   category?: FeedbackCategory;
   priority?: FeedbackPriority;
   search?: string;
+ sentiment?: FeedbackSentiment;  
+  team?: FeedbackTeam;            
 }
 
 export interface IFeedbackResponse {

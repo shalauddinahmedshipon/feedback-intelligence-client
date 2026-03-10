@@ -21,7 +21,7 @@ export function FeedbackTableRow({ feedback, onView, onDelete }: Props) {
 
       <td className="p-3">{feedback.userName || "Anonymous"}</td>
 
-      <td className="p-3 max-w-[250px] truncate">
+      <td className="p-3 max-w-62.5 truncate">
         {feedback.message}
       </td>
 

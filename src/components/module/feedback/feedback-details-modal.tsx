@@ -18,7 +18,7 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-w-lg ">
         <DialogHeader>
           <DialogTitle>Feedback Details</DialogTitle>
         </DialogHeader>
@@ -51,7 +51,7 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
           </div>
 
           {/* Message */}
-          <div>
+          <div className="max-h-80 overflow-y-auto">
             <p className="text-sm text-muted-foreground mb-1">Message</p>
             <p className="text-sm leading-relaxed">{feedback.message}</p>
           </div>
