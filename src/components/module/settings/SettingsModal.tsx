@@ -76,8 +76,6 @@ export default function SettingsModal() {
     try {
       await updateSettings(values).unwrap();
       toast.success("Team email settings have been updated.");
-      
-      // Close the modal after successful save
       closeRef.current?.click();
     } catch (err: any) {
       console.error("Failed to save settings:", err);

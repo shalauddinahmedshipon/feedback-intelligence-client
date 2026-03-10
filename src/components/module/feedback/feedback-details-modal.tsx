@@ -25,22 +25,38 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
 
         <div className="space-y-4">
 
+          {/* User */}
           <div>
-            <p>{feedback.userName || "Anonymous"}</p>
+            <p className="font-medium">{feedback.userName || "Anonymous"}</p>
           </div>
 
-          <div className="flex gap-2">
-            <CategoryBadge category={feedback.category} />
-            <PriorityBadge priority={feedback.priority} />
-            <SentimentBadge sentiment={feedback.sentiment} />
-            <TeamBadge team={feedback.team} />
+          {/* Badges Row */}
+          <div className="grid grid-cols-4 gap-2 text-center">
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Category</p>
+              <CategoryBadge category={feedback.category} />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Priority</p>
+              <PriorityBadge priority={feedback.priority} />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Sentiment</p>
+              <SentimentBadge sentiment={feedback.sentiment} />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Team</p>
+              <TeamBadge team={feedback.team} />
+            </div>
           </div>
 
+          {/* Message */}
           <div>
             <p className="text-sm text-muted-foreground mb-1">Message</p>
             <p className="text-sm leading-relaxed">{feedback.message}</p>
           </div>
 
+          {/* Created At */}
           <div>
             <p className="text-sm text-muted-foreground">Created At</p>
             <p>{new Date(feedback.createdAt).toLocaleString()}</p>
