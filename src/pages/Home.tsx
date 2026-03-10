@@ -1,17 +1,23 @@
 import { CreateFeedbackModal } from "@/components/module/feedback/create-feedback-modal";
+import { FeedbackStats } from "@/components/module/feedback/feedback-stats";
 import { FeedbackTable } from "@/components/module/feedback/feedback-table";
 import SettingsModal from "@/components/module/settings/SettingsModal";
 
 const Home = () => {
     return (
         <div>
-        <div className="flex justify-end mb-6 gap-4">
+         {/* feedback states  */}
+        <FeedbackStats/>
+
+        {/* create feedback and settings team email button  */}
+        <div className="flex justify-end my-6 gap-4">
         <CreateFeedbackModal/>
         <SettingsModal />
         </div>
-        <div>
+        
+        {/* feedback searchbar, filtering dropdown and table  */}
             <FeedbackTable/>
-        </div>
+       
         </div>
     );
 };

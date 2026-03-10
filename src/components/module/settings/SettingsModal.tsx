@@ -88,7 +88,7 @@ export default function SettingsModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex gap-2" disabled={isFetching}>
+        <Button variant="secondary" className="flex gap-2" disabled={isFetching}>
           <Settings size={16} />
           Settings
         </Button>

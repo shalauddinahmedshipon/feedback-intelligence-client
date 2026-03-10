@@ -65,5 +65,15 @@ export interface IFeedbackStats {
     _id: FeedbackPriority;
     count: number;
   }[];
+
+  bySentiment: {
+    _id: FeedbackSentiment;
+    count: number;
+  }[];
+
+  byTeam: {
+    _id: FeedbackTeam;
+    count: number;
+  }[];
 }
 

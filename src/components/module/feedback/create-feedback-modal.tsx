@@ -45,7 +45,7 @@ export function CreateFeedbackModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       {/* Trigger button */}
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button >
           <Plus size={16} />
           Submit Feedback
         </Button>

@@ -133,22 +133,45 @@ export function FeedbackTable() {
           </tr>
         </thead>
         <tbody>
-          {data?.data.data.map((feedback) => (
-            <FeedbackTableRow
-              key={feedback._id}
-              feedback={feedback}
-              onView={(f) => setSelectedFeedback(f)}
-              onDelete={(id) => setDeleteId(id)}
-            />
-          ))}
+          {data?.data.data.length ? (
+          data.data.data.map((feedback) => (
+        <FeedbackTableRow
+          key={feedback._id}
+          feedback={feedback}
+          onView={(f) => setSelectedFeedback(f)}
+          onDelete={(id) => setDeleteId(id)}
+        />
+      ))
+    ) : (
+      <tr>
+        <td colSpan={8} className="text-center p-4 text-sm text-muted-foreground">
+          No feedbacks found.
+        </td>
+      </tr>
+    )}
         </tbody>
       </table>
 
-      {/* Pagination */}
-      <div className="flex justify-end gap-2 mt-2">
-        <Button disabled={page === 1} onClick={() => setPage(p => p - 1)} variant="outline">Prev</Button>
-        <Button disabled={page === data?.data.meta.totalPage} onClick={() => setPage(p => p + 1)} variant="outline">Next</Button>
-      </div>
+     
+     {/* Pagination */}
+<div className="flex flex-wrap justify-between items-center gap-2 mt-2">
+  {/* Total count info */}
+  <div className="text-sm text-muted-foreground">
+    {data && data.data.meta.total > 0
+      ? `Showing ${Math.min((page - 1) * 10 + 1, data.data.meta.total)}-${Math.min(page * 10, data.data.meta.total)} of ${data.data.meta.total} feedbacks`
+      : "No feedbacks found"}
+  </div>
+
+  {/* Pagination buttons */}
+  <div className="flex gap-2">
+    <Button disabled={page === 1} onClick={() => setPage(p => p - 1)} variant="outline">
+      Prev
+    </Button>
+    <Button disabled={page === data?.data.meta.totalPage} onClick={() => setPage(p => p + 1)} variant="outline">
+      Next
+    </Button>
+  </div>
+</div>
 
       {/* Modals */}
       <FeedbackDetailsModal
