@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import {
   Dialog,
   DialogContent,
@@ -14,12 +13,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Settings } from "lucide-react";
-
 import {
   useGetSettingsQuery,
   useUpdateSettingsMutation,
 } from "@/store/api/settings.api";
-
 import { settingsSchema, type SettingsFormValues } from "@/schema/settings.schema";
 
 
@@ -32,8 +29,8 @@ const teams = [
   "design",
   "security",
 ] as const;
+
 import { useEffect, useRef } from "react";
-// ... other imports remain the same ...
 import { toast } from "sonner";
 
 export default function SettingsModal() {
@@ -125,7 +122,6 @@ export default function SettingsModal() {
           ))}
 
           <DialogFooter className="pt-6 gap-3 sm:gap-4">
-            {/* Hidden button we click programmatically */}
             <DialogClose asChild>
               <button type="button" ref={closeRef} className="sr-only">
                 Close

@@ -1,4 +1,5 @@
-import SettingsModal from "@/components/module/SettingsModal";
+import { FeedbackTable } from "@/components/module/feedback/feedback-table";
+import SettingsModal from "@/components/module/settings/SettingsModal";
 
 const Home = () => {
     return (
@@ -6,7 +7,9 @@ const Home = () => {
         <div className="flex justify-end mb-6">
         <SettingsModal />
         </div>
-           
+        <div>
+            <FeedbackTable/>
+        </div>
         </div>
     );
 };
