@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Dialog,
   DialogContent,
@@ -8,18 +8,19 @@ import {
   DialogTrigger,
   DialogFooter,
   DialogClose,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Settings } from "lucide-react";
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Settings } from "lucide-react"
 import {
   useGetSettingsQuery,
   useUpdateSettingsMutation,
-} from "@/store/api/settings.api";
-import { settingsSchema, type SettingsFormValues } from "@/schema/settings.schema";
-
-
+} from "@/store/api/settings.api"
+import {
+  settingsSchema,
+  type SettingsFormValues,
+} from "@/schema/settings.schema"
 
 const teams = [
   "engineering",
@@ -28,16 +29,16 @@ const teams = [
   "billing",
   "design",
   "security",
-] as const;
+] as const
 
-import { useEffect, useRef } from "react";
-import { toast } from "sonner";
+import { useEffect, useRef } from "react"
+import { toast } from "sonner"
 
 export default function SettingsModal() {
-  const { data, isLoading: isFetching } = useGetSettingsQuery();
-  const [updateSettings, { isLoading: isSaving }] = useUpdateSettingsMutation();
+  const { data, isLoading: isFetching } = useGetSettingsQuery()
+  const [updateSettings, { isLoading: isSaving }] = useUpdateSettingsMutation()
 
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null)
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(settingsSchema),
@@ -51,14 +52,19 @@ export default function SettingsModal() {
         security: "",
       },
     },
-  });
+  })
 
-  const { register, handleSubmit, reset, formState: { errors } } = form;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = form
 
   useEffect(() => {
-    if (!data?.data?.teamEmails) return;
+    if (!data?.data?.teamEmails) return
 
-    const api = data.data.teamEmails;
+    const api = data.data.teamEmails
 
     reset({
       teamEmails: {
@@ -69,26 +75,30 @@ export default function SettingsModal() {
         design: api.design ?? "",
         security: api.security ?? "",
       },
-    });
-  }, [data, reset]);
+    })
+  }, [data, reset])
 
   const onSubmit = handleSubmit(async (values) => {
     try {
-      await updateSettings(values).unwrap();
-      toast.success("Team email settings have been updated.");
-      closeRef.current?.click();
+      await updateSettings(values).unwrap()
+      toast.success("Team email settings have been updated.")
+      closeRef.current?.click()
     } catch (err: any) {
-      console.error("Failed to save settings:", err);
+      console.error("Failed to save settings:", err)
       toast.error(
         err?.data?.message || "Failed to update settings. Please try again."
-      );
+      )
     }
-  });
+  })
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="flex gap-2" disabled={isFetching}>
+        <Button
+          variant="secondary"
+          className="flex gap-2"
+          disabled={isFetching}
+        >
           <Settings size={16} />
           Settings
         </Button>
@@ -99,7 +109,7 @@ export default function SettingsModal() {
           <DialogTitle>Team Email Settings</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={onSubmit} className="space-y-5 mt-4">
+        <form onSubmit={onSubmit} className="mt-4 space-y-5">
           {teams.map((team) => (
             <div key={team} className="space-y-1.5">
               <Label htmlFor={`team-emails-${team}`} className="capitalize">
@@ -112,14 +122,14 @@ export default function SettingsModal() {
                 {...register(`teamEmails.${team}`)}
               />
               {errors.teamEmails?.[team] && (
-                <p className="text-sm text-destructive mt-1">
+                <p className="mt-1 text-sm text-destructive">
                   {errors.teamEmails[team]?.message || "Invalid email address"}
                 </p>
               )}
             </div>
           ))}
 
-          <DialogFooter className="pt-6 gap-3 sm:gap-4">
+          <DialogFooter className="gap-3 pt-6 sm:gap-4">
             <DialogClose asChild>
               <button type="button" ref={closeRef} className="sr-only">
                 Close
@@ -134,7 +144,9 @@ export default function SettingsModal() {
 
             <Button
               type="submit"
-              disabled={isSaving || isFetching || Object.keys(errors).length > 0}
+              disabled={
+                isSaving || isFetching || Object.keys(errors).length > 0
+              }
             >
               {isSaving ? "Saving..." : "Save Settings"}
             </Button>
@@ -142,5 +154,5 @@ export default function SettingsModal() {
         </form>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

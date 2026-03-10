@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const feedbackSchema = z.object({
   message: z
@@ -8,10 +8,7 @@ export const feedbackSchema = z.object({
     .min(10, "Feedback must be at least 10 characters")
     .max(1000, "Feedback cannot exceed 1000 characters"),
 
-  userName: z
-    .string()
-    .max(100, "Name cannot exceed 100 characters")
-    .optional(),
-});
+  userName: z.string().max(100, "Name cannot exceed 100 characters").optional(),
+})
 
-export type FeedbackFormValues = z.infer<typeof feedbackSchema>;
+export type FeedbackFormValues = z.infer<typeof feedbackSchema>

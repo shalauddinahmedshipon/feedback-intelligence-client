@@ -39,9 +39,9 @@ export function FeedbackStats() {
   if (isLoading || !data) return null
 
   return (
-    <div className="flex flex-wrap gap-4 mb-4">
+    <div className="mb-4 flex flex-wrap gap-4">
       {/* Category Stats */}
-      <Card className="flex-1 min-w-[200px]">
+      <Card className="min-w-[200px] flex-1">
         <CardHeader>
           <CardTitle>Category</CardTitle>
         </CardHeader>
@@ -49,7 +49,7 @@ export function FeedbackStats() {
           {data.data.byCategory.map((c) => (
             <div
               key={c._id}
-              className={`px-3 py-1 rounded text-sm font-medium ${categoryColors[c._id]}`}
+              className={`rounded px-3 py-1 text-sm font-medium ${categoryColors[c._id]}`}
             >
               {`${c._id.charAt(0).toUpperCase() + c._id.slice(1)}: ${c.count}`}
             </div>
@@ -58,7 +58,7 @@ export function FeedbackStats() {
       </Card>
 
       {/* Priority Stats */}
-      <Card className="flex-1 min-w-[200px]">
+      <Card className="min-w-[200px] flex-1">
         <CardHeader>
           <CardTitle>Priority</CardTitle>
         </CardHeader>
@@ -66,7 +66,7 @@ export function FeedbackStats() {
           {data.data.byPriority.map((p) => (
             <div
               key={p._id}
-              className={`px-3 py-1 rounded text-sm font-medium ${priorityColors[p._id]}`}
+              className={`rounded px-3 py-1 text-sm font-medium ${priorityColors[p._id]}`}
             >
               {`${p._id.charAt(0).toUpperCase() + p._id.slice(1)}: ${p.count}`}
             </div>
@@ -75,7 +75,7 @@ export function FeedbackStats() {
       </Card>
 
       {/* Sentiment Stats */}
-      <Card className="flex-1 min-w-[200px]">
+      <Card className="min-w-[200px] flex-1">
         <CardHeader>
           <CardTitle>Sentiment</CardTitle>
         </CardHeader>
@@ -83,7 +83,7 @@ export function FeedbackStats() {
           {data.data.bySentiment.map((s) => (
             <div
               key={s._id}
-              className={`px-3 py-1 rounded text-sm font-medium ${sentimentColors[s._id]}`}
+              className={`rounded px-3 py-1 text-sm font-medium ${sentimentColors[s._id]}`}
             >
               {`${s._id.charAt(0).toUpperCase() + s._id.slice(1)}: ${s.count}`}
             </div>
@@ -92,7 +92,7 @@ export function FeedbackStats() {
       </Card>
 
       {/* Team Stats */}
-      <Card className="flex-1 min-w-[200px]">
+      <Card className="min-w-[200px] flex-1">
         <CardHeader>
           <CardTitle>Team</CardTitle>
         </CardHeader>
@@ -100,7 +100,7 @@ export function FeedbackStats() {
           {data.data.byTeam.map((t) => (
             <div
               key={t._id}
-              className={`px-3 py-1 rounded text-sm font-medium ${teamColors[t._id]}`}
+              className={`rounded px-3 py-1 text-sm font-medium ${teamColors[t._id]}`}
             >
               {`${t._id.charAt(0).toUpperCase() + t._id.slice(1)}: ${t.count}`}
             </div>

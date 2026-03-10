@@ -1,4 +1,3 @@
-
 export type FeedbackTeam =
   | "engineering"
   | "product"
@@ -11,7 +10,6 @@ export interface ITeamEmailSettings {
   teamEmails: Record<FeedbackTeam, string>
   updatedAt?: string
 }
-
 
 export interface UpdateSettingsPayload {
   teamEmails: Record<FeedbackTeam, string>

@@ -18,12 +18,9 @@ interface Props {
 export function FeedbackTableRow({ feedback, onView, onDelete }: Props) {
   return (
     <tr className="border-b">
-
       <td className="p-3">{feedback.userName || "Anonymous"}</td>
 
-      <td className="p-3 max-w-62.5 truncate">
-        {feedback.message}
-      </td>
+      <td className="max-w-62.5 truncate p-3">{feedback.message}</td>
 
       <td className="p-3">
         <CategoryBadge category={feedback.category} />
@@ -45,13 +42,8 @@ export function FeedbackTableRow({ feedback, onView, onDelete }: Props) {
         {new Date(feedback.createdAt).toLocaleDateString()}
       </td>
 
-      <td className="p-3 flex gap-2">
-
-        <Button
-          size="icon"
-          variant="outline"
-          onClick={() => onView(feedback)}
-        >
+      <td className="flex gap-2 p-3">
+        <Button size="icon" variant="outline" onClick={() => onView(feedback)}>
           <Eye size={16} />
         </Button>
 
@@ -62,9 +54,7 @@ export function FeedbackTableRow({ feedback, onView, onDelete }: Props) {
         >
           <Trash2 size={16} />
         </Button>
-
       </td>
-
     </tr>
   )
 }

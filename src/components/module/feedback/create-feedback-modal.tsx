@@ -4,7 +4,13 @@ import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Field, FieldLabel, FieldError, FieldGroup, FieldDescription } from "@/components/ui/field"
+import {
+  Field,
+  FieldLabel,
+  FieldError,
+  FieldGroup,
+  FieldDescription,
+} from "@/components/ui/field"
 import {
   Dialog,
   DialogContent,
@@ -16,7 +22,10 @@ import {
 } from "@/components/ui/dialog"
 import { useCreateFeedbackMutation } from "@/store/api/feedback.api"
 import { Loader2, Plus } from "lucide-react"
-import { feedbackSchema, type FeedbackFormValues } from "@/schema/feedback.schema"
+import {
+  feedbackSchema,
+  type FeedbackFormValues,
+} from "@/schema/feedback.schema"
 import { useState } from "react"
 
 export function CreateFeedbackModal() {
@@ -45,7 +54,7 @@ export function CreateFeedbackModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       {/* Trigger button */}
       <DialogTrigger asChild>
-        <Button >
+        <Button>
           <Plus size={16} />
           Submit Feedback
         </Button>
@@ -56,7 +65,11 @@ export function CreateFeedbackModal() {
           <DialogTitle>Submit Feedback</DialogTitle>
         </DialogHeader>
 
-        <form id="create-feedback-form" onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-4">
+        <form
+          id="create-feedback-form"
+          onSubmit={handleSubmit(onSubmit)}
+          className="mt-4 space-y-5"
+        >
           <FieldGroup>
             <Controller
               name="userName"
@@ -64,8 +77,14 @@ export function CreateFeedbackModal() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="userName">Your Name</FieldLabel>
-                  <Input {...field} id="userName" placeholder="John Doe (optional)" />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                  <Input
+                    {...field}
+                    id="userName"
+                    placeholder="John Doe (optional)"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -76,9 +95,19 @@ export function CreateFeedbackModal() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="message">Message</FieldLabel>
-                  <Textarea {...field} id="message" rows={6} className="h-40" placeholder="Your feedback..." />
-                  <FieldDescription>{field.value.length} / 1000 characters</FieldDescription>
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                  <Textarea
+                    {...field}
+                    id="message"
+                    rows={6}
+                    className="h-40"
+                    placeholder="Your feedback..."
+                  />
+                  <FieldDescription>
+                    {field.value.length} / 1000 characters
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -96,8 +125,14 @@ export function CreateFeedbackModal() {
               </Button>
             </DialogClose>
 
-            <Button type="submit" form="create-feedback-form" disabled={isLoading}>
-              {isLoading ? <Loader2 className="animate-spin w-4 h-4 mr-2 inline-block" /> : null}
+            <Button
+              type="submit"
+              form="create-feedback-form"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="mr-2 inline-block h-4 w-4 animate-spin" />
+              ) : null}
               Submit
             </Button>
           </DialogFooter>

@@ -49,7 +49,7 @@ export const TeamBadge = ({ team }: { team: FeedbackTeam }) => {
 export const CategoryBadge = ({ category }: { category: FeedbackCategory }) => {
   return (
     <Badge variant="outline" className={categoryStyles[category]}>
-     {category.charAt(0).toUpperCase() + category.slice(1)}
+      {category.charAt(0).toUpperCase() + category.slice(1)}
     </Badge>
   )
 }

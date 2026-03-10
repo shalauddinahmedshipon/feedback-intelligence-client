@@ -1,4 +1,9 @@
-import type { FeedbackCategory, FeedbackPriority, FeedbackSentiment, FeedbackTeam } from "@/types/feedback.types";
+import type {
+  FeedbackCategory,
+  FeedbackPriority,
+  FeedbackSentiment,
+  FeedbackTeam,
+} from "@/types/feedback.types"
 
 export const categories: { label: string; value: FeedbackCategory }[] = [
   { label: "Bug", value: "bug" },

@@ -5,11 +5,11 @@ export type FeedbackCategory =
   | "ux"
   | "performance"
   | "security"
-  | "other";
+  | "other"
 
-export type FeedbackPriority = "low" | "medium" | "high" | "urgent";
+export type FeedbackPriority = "low" | "medium" | "high" | "urgent"
 
-export type FeedbackSentiment = "positive" | "neutral" | "negative";
+export type FeedbackSentiment = "positive" | "neutral" | "negative"
 
 export type FeedbackTeam =
   | "engineering"
@@ -17,63 +17,62 @@ export type FeedbackTeam =
   | "support"
   | "billing"
   | "security"
-  | "design";
+  | "design"
 
 export interface IFeedback {
-  _id: string;
-  message: string;
-  userName?: string;
-  category: FeedbackCategory;
-  priority: FeedbackPriority;
-  sentiment: FeedbackSentiment;
-  team: FeedbackTeam;
-  createdAt: string;
+  _id: string
+  message: string
+  userName?: string
+  category: FeedbackCategory
+  priority: FeedbackPriority
+  sentiment: FeedbackSentiment
+  team: FeedbackTeam
+  createdAt: string
 }
 
 export interface ICreateFeedbackPayload {
-  message: string;
-  userName?: string;
+  message: string
+  userName?: string
 }
 
 export interface IFeedbackQuery {
-  page?: number;
-  limit?: number;
-  category?: FeedbackCategory;
-  priority?: FeedbackPriority;
-  search?: string;
- sentiment?: FeedbackSentiment;  
-  team?: FeedbackTeam;            
+  page?: number
+  limit?: number
+  category?: FeedbackCategory
+  priority?: FeedbackPriority
+  search?: string
+  sentiment?: FeedbackSentiment
+  team?: FeedbackTeam
 }
 
 export interface IFeedbackResponse {
   meta: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPage: number;
-  };
-  data: IFeedback[];
+    page: number
+    limit: number
+    total: number
+    totalPage: number
+  }
+  data: IFeedback[]
 }
 
 export interface IFeedbackStats {
   byCategory: {
-    _id: FeedbackCategory;
-    count: number;
-  }[];
+    _id: FeedbackCategory
+    count: number
+  }[]
 
   byPriority: {
-    _id: FeedbackPriority;
-    count: number;
-  }[];
+    _id: FeedbackPriority
+    count: number
+  }[]
 
   bySentiment: {
-    _id: FeedbackSentiment;
-    count: number;
-  }[];
+    _id: FeedbackSentiment
+    count: number
+  }[]
 
   byTeam: {
-    _id: FeedbackTeam;
-    count: number;
-  }[];
+    _id: FeedbackTeam
+    count: number
+  }[]
 }
-

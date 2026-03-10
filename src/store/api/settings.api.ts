@@ -1,7 +1,10 @@
-import { TAGS } from "@/types/api.tags";
-import { baseApi } from "./baseApi";
-import type {  ITeamEmailSettings, UpdateSettingsPayload } from "@/types/settings.types";
-import type { ApiResponse } from "@/types/api.response";
+import { TAGS } from "@/types/api.tags"
+import { baseApi } from "./baseApi"
+import type {
+  ITeamEmailSettings,
+  UpdateSettingsPayload,
+} from "@/types/settings.types"
+import type { ApiResponse } from "@/types/api.response"
 
 export const settingsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,9 +28,6 @@ export const settingsApi = baseApi.injectEndpoints({
       invalidatesTags: [TAGS.SETTINGS],
     }),
   }),
-});
+})
 
-export const {
-  useGetSettingsQuery,
-  useUpdateSettingsMutation,
-} = settingsApi;
+export const { useGetSettingsQuery, useUpdateSettingsMutation } = settingsApi

@@ -4,7 +4,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { CategoryBadge, PriorityBadge, SentimentBadge, TeamBadge } from "./feedback-badges"
+import {
+  CategoryBadge,
+  PriorityBadge,
+  SentimentBadge,
+  TeamBadge,
+} from "./feedback-badges"
 import type { IFeedback } from "@/types/feedback.types"
 
 interface Props {
@@ -18,13 +23,12 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg ">
+      <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>Feedback Details</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
-
           {/* User */}
           <div>
             <p className="font-medium">{feedback.userName || "Anonymous"}</p>
@@ -33,26 +37,26 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
           {/* Badges Row */}
           <div className="grid grid-cols-4 gap-2 text-center">
             <div>
-              <p className="text-xs text-muted-foreground mb-1">Category</p>
+              <p className="mb-1 text-xs text-muted-foreground">Category</p>
               <CategoryBadge category={feedback.category} />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground mb-1">Priority</p>
+              <p className="mb-1 text-xs text-muted-foreground">Priority</p>
               <PriorityBadge priority={feedback.priority} />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground mb-1">Sentiment</p>
+              <p className="mb-1 text-xs text-muted-foreground">Sentiment</p>
               <SentimentBadge sentiment={feedback.sentiment} />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground mb-1">Team</p>
+              <p className="mb-1 text-xs text-muted-foreground">Team</p>
               <TeamBadge team={feedback.team} />
             </div>
           </div>
 
           {/* Message */}
           <div className="max-h-80 overflow-y-auto">
-            <p className="text-sm text-muted-foreground mb-1">Message</p>
+            <p className="mb-1 text-sm text-muted-foreground">Message</p>
             <p className="text-sm leading-relaxed">{feedback.message}</p>
           </div>
 
@@ -61,7 +65,6 @@ export function FeedbackDetailsModal({ open, onOpenChange, feedback }: Props) {
             <p className="text-sm text-muted-foreground">Created At</p>
             <p>{new Date(feedback.createdAt).toLocaleString()}</p>
           </div>
-
         </div>
       </DialogContent>
     </Dialog>
