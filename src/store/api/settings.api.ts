@@ -1,10 +1,11 @@
 import { TAGS } from "@/types/api.tags";
 import { baseApi } from "./baseApi";
-import type { SettingsResponse, UpdateSettingsPayload } from "@/types/settings.types";
+import type {  ITeamEmailSettings, UpdateSettingsPayload } from "@/types/settings.types";
+import type { ApiResponse } from "@/types/api.response";
 
 export const settingsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getSettings: builder.query<SettingsResponse, void>({
+    getSettings: builder.query<ApiResponse<ITeamEmailSettings>, void>({
       query: () => ({
         url: "/settings",
         method: "GET",
@@ -13,7 +14,7 @@ export const settingsApi = baseApi.injectEndpoints({
     }),
 
     updateSettings: builder.mutation<
-      SettingsResponse,
+      ApiResponse<ITeamEmailSettings>,
       UpdateSettingsPayload
     >({
       query: (data) => ({
